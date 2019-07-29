@@ -1,10 +1,10 @@
-This project was an exploratory effort to play with React Hooks and determine their viability as a reducer solution.
+This project was an exploratory effort to convert my hooks-library repo to Typescript.
 
 Dependencies:
 Node 10.16
 npm 6.10.1
 React 16.8
-
+Typescript 3.5.3
 
 To install this project locally:
 
