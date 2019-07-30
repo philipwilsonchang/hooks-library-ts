@@ -1,22 +1,27 @@
-import { Book } from './Store';
+import { Book, IState } from './Store';
 
 export type ReducerAction = {
-  type: string,
-  payload: any,
+  type: 'ADD' | 'DELETE',
+  payload: Book,
 };
 
-function reducer(state: any, action: ReducerAction) {
+function reducer(state: IState, action: ReducerAction): IState {
   console.log(action);
+  let newState = {...state};
   switch (action.type) {
     case 'ADD':
-      return [...state, action.payload];
+      newState.books.push(action.payload);
+      console.log(Object.is(newState, state));
+      return newState;
     case 'DELETE':
-      return state.filter((book: Book) => {
-        if (book.isbn !== action.payload) {
+      newState.books = newState.books.filter((book: Book) => {
+        if (book !== action.payload) {
           return true
         }
         return false
       });
+      console.log(newState);
+      return newState;
     default:
       console.log("ERROR ON ACTION:", action)
       return state;      
