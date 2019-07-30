@@ -1,10 +1,17 @@
-function reducer(state, action) {
+import { Book } from './Store';
+
+export type ReducerAction = {
+  type: string,
+  payload: any,
+};
+
+function reducer(state: any, action: ReducerAction) {
   console.log(action);
-  switch (action.action) {
+  switch (action.type) {
     case 'ADD':
       return [...state, action.payload];
     case 'DELETE':
-      return state.filter(book => {
+      return state.filter((book: Book) => {
         if (book.isbn !== action.payload) {
           return true
         }

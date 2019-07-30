@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { StoreContext } from './Store';
+import { Book, StoreContext } from './Store';
 
 const BooksTable = () => {
   const {state, dispatch} = useContext(StoreContext);
@@ -16,13 +16,13 @@ const BooksTable = () => {
         </tr>
       </thead>
       <tbody>
-        {state.map(book => (
+        {state.map((book: Book) => (
           <tr>
             <td>{book.title}</td>
             <td>{book.author}</td>
             <td>{book.isbn}</td>
             <td>
-              <button className="button muted-button" onClick={() => dispatch({action: 'DELETE', payload: book.isbn})}>Delete</button>
+              <button className="button muted-button" onClick={() => dispatch({type: 'DELETE', payload: book.isbn})}>Delete</button>
             </td>
           </tr>
         ))}

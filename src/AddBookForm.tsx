@@ -5,15 +5,17 @@ import {
 } from 'react';
 import { StoreContext } from './Store';
 
+type ButtonEvent = React.MouseEvent<HTMLButtonElement>;
+
 function AddBookForm() {
 	const { state, dispatch } = useContext(StoreContext); // eslint-disable-line
 	const [title, setTitle] = useState('Title');
 	const [author, setAuthor] = useState('Author');
 	const [isbn, setISBN] = useState('0');
 
-	const addBook = (e) => {
+	const addBook = (e: ButtonEvent) => {
 		e.preventDefault();
-		dispatch({ action: 'ADD', payload: { title: title, author: author, isbn: isbn } });
+		dispatch({ type: 'ADD', payload: { title: title, author: author, isbn: isbn } });
 	};
 
 	return (
